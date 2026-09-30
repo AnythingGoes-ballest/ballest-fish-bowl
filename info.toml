@@ -1,0 +1,11 @@
+[meta]
+name = "Fish Bowl"
+version = "0.1.0"
+author = "AnythingGoes"
+description = "A ball that is an aquarium: fish swimming round and breathing bubbles over sand, coral, a treasure chest, a castle and swaying seaweed."
+min_host = "0.17.1"
+dependencies = ["cosmetic-kit"]
+
+[script]
+files = ["main.as"]
+assets = ["*.png", "models/*.txt", "models/*.glb"]

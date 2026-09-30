@@ -1,0 +1,73 @@
+# The Fish Bowl: the ball is an aquarium. A clownfish and a yellow tang (Quaternius, CC0) swim round it, breathing
+# little bubbles, over a sand floor with coral (MiniPoly, CC0), a treasure chest puffing bubbles, a little castle
+# and rocks (Quaternius, CC0), a shell (Kenney, CC0) and swaying seaweed. Everything inside stays upright as the
+# ball rolls. Made by make_bowl.py.
+material water glass #5cc8ff opacity=0.09
+material weed plastic #2f9e44 rough=0.6
+material weed2 plastic #58c24a rough=0.6
+material weed3 plastic #1f7a4a rough=0.6
+tempo rate=0.35 calm=1 full=1
+
+# the water fills the tank
+group water
+sphere water r=48.8
+
+# the tank: upright, turned the way the ball goes
+group tank travel
+mesh sand.glb at=0,0,-48
+mesh ocean_chest.glb size=22 at=-15,-16,-20.5 rot=0,35,0
+mesh tower.glb size=32 at=18,12,-20.5 rot=0,-140,0
+mesh rocks.glb size=19 at=-22,13,-20.5 rot=0,70,0
+mesh mussel.glb size=9 at=21,-15,-20.3 rot=0,-30,0
+mesh coral_pink.glb size=15 at=4,22,-20.5
+mesh coral_red.glb size=13 at=-4,-25,-20.5 rot=0,60,0
+mesh coral_blue.glb size=14 at=26,0,-20.5 rot=0,20,0
+mesh coral_orange.glb size=12 at=-26,-2,-20.5
+# bubbles puffing out of the chest
+mesh bubbles.glb at=-15,-16,-8 anim=rise rate=0.8
+
+# seaweed, swaying
+group weedA0 on=tank pivot=-6.0,24,-20.0 swing=x angle=6 phase=0
+capsule weed r=1.6 len=9.0 at=-6.0,24,-20.0 rot=12,0,0 scale=2.4,0.4,1
+group weedA1 on=weedA0 pivot=-3.7,24,-9.2 swing=x angle=9 phase=40
+capsule weed r=1.45 len=8.1 at=-3.7,24,-9.2 rot=-12,0,0 scale=2.4,0.4,1
+group weedA2 on=weedA1 pivot=-5.8,24,0.3 swing=x angle=12 phase=80
+capsule weed r=1.25 len=6.9 at=-5.8,24,0.3 rot=12,0,0 scale=2.4,0.4,1
+group weedA3 on=weedA2 pivot=-4.0,24,8.4 swing=x angle=15 phase=120
+capsule weed r=1.0 len=6.0 at=-4.0,24,8.4 rot=-12,0,0 scale=2.4,0.4,1
+group weedB0 on=tank pivot=9.0,-22,-20.0 swing=x angle=6 phase=120
+capsule weed2 r=1.6 len=7.2 at=9.0,-22,-20.0 rot=12,0,0 scale=2.4,0.4,1
+group weedB1 on=weedB0 pivot=10.9,-22,-11.0 swing=x angle=9 phase=160
+capsule weed2 r=1.45 len=6.5 at=10.9,-22,-11.0 rot=-12,0,0 scale=2.4,0.4,1
+group weedB2 on=weedB1 pivot=9.2,-22,-3.0 swing=x angle=12 phase=200
+capsule weed2 r=1.25 len=5.5 at=9.2,-22,-3.0 rot=12,0,0 scale=2.4,0.4,1
+group weedB3 on=weedB2 pivot=10.6,-22,3.7 swing=x angle=15 phase=240
+capsule weed2 r=1.0 len=4.8 at=10.6,-22,3.7 rot=-12,0,0 scale=2.4,0.4,1
+group weedC0 on=tank pivot=-24.0,6,-20.0 swing=x angle=6 phase=240
+capsule weed3 r=1.6 len=6.0 at=-24.0,6,-20.0 rot=12,0,0 scale=2.4,0.4,1
+group weedC1 on=weedC0 pivot=-22.3,6,-12.2 swing=x angle=9 phase=280
+capsule weed3 r=1.45 len=5.4 at=-22.3,6,-12.2 rot=-12,0,0 scale=2.4,0.4,1
+group weedC2 on=weedC1 pivot=-23.8,6,-5.2 swing=x angle=12 phase=320
+capsule weed3 r=1.25 len=4.6 at=-23.8,6,-5.2 rot=12,0,0 scale=2.4,0.4,1
+group weedC3 on=weedC2 pivot=-22.6,6,0.5 swing=x angle=15 phase=360
+capsule weed3 r=1.0 len=4.0 at=-22.6,6,0.5 rot=-12,0,0 scale=2.4,0.4,1
+group weedD0 on=tank pivot=26.0,8,-20.0 swing=x angle=6 phase=60
+capsule weed2 r=1.6 len=5.4 at=26.0,8,-20.0 rot=12,0,0 scale=2.4,0.4,1
+group weedD1 on=weedD0 pivot=27.5,8,-12.8 swing=x angle=9 phase=100
+capsule weed2 r=1.45 len=4.9 at=27.5,8,-12.8 rot=-12,0,0 scale=2.4,0.4,1
+group weedD2 on=weedD1 pivot=26.2,8,-6.3 swing=x angle=12 phase=140
+capsule weed2 r=1.25 len=4.1 at=26.2,8,-6.3 rot=12,0,0 scale=2.4,0.4,1
+group weedD3 on=weedD2 pivot=27.3,8,-1.0 swing=x angle=15 phase=180
+capsule weed2 r=1.0 len=3.6 at=27.3,8,-1.0 rot=-12,0,0 scale=2.4,0.4,1
+
+# the clownfish swims round, a little above the sand, breathing bubbles
+group swimA on=tank spin=z speed=40
+group fishA on=swimA bob=3
+mesh clownfish.glb size=22 at=22,0,-2 rot=0,90,0 anim=Swimming_Normal rate=1
+mesh bubbles.glb at=26,0,5 anim=rise rate=0.6
+
+# the yellow tang swims the other way, higher up
+group swimB on=tank spin=z speed=-28
+group fishB on=swimB bob=4 phase=150
+mesh yellow_tang.glb size=20 at=-16,0,12 rot=0,90,0 anim=Swimming_Normal rate=0.8
+mesh bubbles.glb at=-20,0,20 anim=rise rate=0.5
